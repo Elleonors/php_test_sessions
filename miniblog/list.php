@@ -6,5 +6,9 @@ $footer = "./assets/footer.php";
 $pdo = "./assets/functions/pdo.php";
 //root
 $index =  "./index.php";
+$connection = "./connection.php";
+$user = "./user.php";
+$admin = "./admin.php";
+$listing = "./listing.php";
 //pages
 ?>

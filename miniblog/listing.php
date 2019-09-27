@@ -1,6 +1,6 @@
 <?php
 session_start();
-$module="list";
+$module="listing";
 include("./template/header.php");
 include("./template/menu.php");
 if($_SESSION['admin']==="Y"){

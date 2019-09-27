@@ -1,16 +1,17 @@
 <?php
+include "./list.php";
 if ($_GET['destroy']==="Y" | !isset($_SESSION['admin'])){
     session_destroy();
     header("Location: ./index.php");
 }
 if($module==="home"){
-  $home="active";
+  $homemenu="active";
 } else if($module==="admin"){
-  $admin="active";
+  $adminmenu="active";
 } else if($module==="user"){
-  $user="active";
-} else if($module==="list"){
-  $list="active";
+  $usermenu="active";
+} else if($module==="listing"){
+  $listingmenu="active";
 }
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,28 +22,28 @@ if($module==="home"){
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link <?=$home?>" href="./home.php">Home</a>
+        <a class="nav-link <?=$homemenu?>" href="./home.php">Home</a>
       </li>
       <?php
         if($_SESSION['admin']==="Y"){
           echo "
             <li class='nav-item'>
-              <a class='nav-link ".$admin."' href='./admin.php'>Admin</a>
+              <a class='nav-link ".$adminmenu."' href='".$admin."'>Admin</a>
             </li>
           ";
         } else if($_SESSION['admin']==="N"){
           echo "
             <li class='nav-item'>
-              <a class='nav-link ".$user."' href='./user.php'>User</a>
+              <a class='nav-link ".$usermenu."' href='".$user."'>User</a>
             </li>
           ";
         }
       ?>
       <li class="nav-item">
-        <a class="nav-link <?=$list?>" href="./list.php">List</a>
+        <a class="nav-link <?=$listingmenu?>" href="<?=$listing?>">Listing</a>
       </li>
     </ul>
-    <form action="./list.php" class="form-inline my-2 my-lg-0">
+    <form action="<?=$listing?>" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
